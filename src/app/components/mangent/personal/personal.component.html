@@ -1,0 +1,109 @@
+<!-- 条件查询模块Start -->
+<div style="width:100%;height:130px;margin-bottom:20px;border:1px solid #EBEDF0;padding: 20px 0;">
+  <div ng-row>
+      <div nz-col nzSpan="8">
+        <nz-form-label [nzSpan]="5" nzFor="email">用户名</nz-form-label>
+        <nz-form-control [nzSpan]="15">
+          <input nz-input type="text" ng-trim="false" value="111" [(ngModel)]="inputName1" >
+        </nz-form-control>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-label [nzSpan]="5" nzFor="email">密码</nz-form-label>
+        <nz-form-control [nzSpan]="15">
+          <input nz-input name="email" type="email" id="email">
+        </nz-form-control>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-label [nzSpan]="5" nzFor="email">Id</nz-form-label>
+        <nz-form-control [nzSpan]="15">
+          <input nz-input name="email" type="email" id="email">
+        </nz-form-control>
+      </div>
+  </div>
+  <div ng-row>
+    <div nz-col nzSpan="8" style="margin-top: 20px"> 
+      <nz-form-label [nzSpan]="5" nzFor="email">开始时间</nz-form-label>
+      <nz-date-picker nzFormat="yyyy-MM-dd HH:mm:ss" [(ngModel)]="sDate" style="width:62.5%;">
+    </nz-date-picker>
+    </div>
+    <div nz-col nzSpan="8" style="margin-top: 20px"> 
+      <nz-form-label [nzSpan]="5" nzFor="email">结束时间</nz-form-label>
+      <nz-date-picker nzFormat="yyyy-MM-dd HH:mm:ss" [(ngModel)]="eDate" style="width:62.5%;">
+    </nz-date-picker>
+    </div>
+    <div nz-col nzSpan="8"></div>
+    <div nz-col nzSpan="8">
+      <button nz-button [nzType]="'primary'" style="float: right;margin-top:20px;margin-right: 84px;" (click)="search()">查询</button>
+    </div>
+  </div>
+</div>
+<!-- 条件查询模块End -->
+
+
+<!-- 表格展示模块Start -->
+<div style="width:100%;height:200px;margin-bottom:20px;background-color: #D6E8FA" >
+  <!-- //表格修改模块start -->
+  <nz-modal [(nzVisible)]="isVisibleXg" nzTitle="修改" (nzOnCancel)="handleXgCancel()" (nzOnOk)="handleXgOk()" style="background-color: khaki;">
+    <div ng-row>
+        <nz-form-label [nzSpan]="5" nzFor="email">用户名</nz-form-label>
+        <input nz-input type="text" ng-trim="false" value="111" [(ngModel)]="inputName1" style="width: 69%;margin-top: 5px;margin-bottom: 15px;"> 
+    </div>  
+    <div ng-row>
+      <nz-form-label [nzSpan]="5" nzFor="email">用户名</nz-form-label>
+      <input nz-input type="text" ng-trim="false" value="111" [(ngModel)]="inputName1" style="width: 69%;margin-top: 5px;margin-bottom: 15px;"> 
+    </div>  
+    <div ng-row>
+      <nz-form-label [nzSpan]="5" nzFor="email">用户名</nz-form-label>
+      <input nz-input type="text" ng-trim="false" value="111" [(ngModel)]="inputName1" style="width: 69%;margin-top: 5px;margin-bottom: 15px;"> 
+    </div>  
+  </nz-modal>
+  <!-- //表格修改模块End -->
+
+  <!-- //条件modal-start -->
+  <nz-modal [(nzVisible)]="isVisibleTj" nzTitle="添加" (nzOnCancel)="handleTjCancel()" (nzOnOk)="handleTjOk()" style="background-color: khaki;">
+    <div ng-row>
+        <nz-form-label [nzSpan]="5" nzFor="email">用户名</nz-form-label>
+        <input nz-input type="text" ng-trim="false" value="111" [(ngModel)]="inputName1" style="width: 69%;margin-top: 5px;margin-bottom: 15px;"> 
+    </div>  
+    <div ng-row>
+      <nz-form-label [nzSpan]="5" nzFor="email">用户名</nz-form-label>
+      <input nz-input type="text" ng-trim="false" value="111" [(ngModel)]="inputName1" style="width: 69%;margin-top: 5px;margin-bottom: 15px;"> 
+    </div>  
+    <div ng-row>
+      <nz-form-label [nzSpan]="5" nzFor="email">用户名</nz-form-label>
+      <input nz-input type="text" ng-trim="false" value="111" [(ngModel)]="inputName1" style="width: 69%;margin-top: 5px;margin-bottom: 15px;"> 
+    </div>  
+  </nz-modal>
+  <!-- //条件modal-end -->
+
+  <button nz-button nzType="primary" (click)="showModalTj()">添加</button>
+  <nz-table #headerTable [nzData]="listOfData" [nzPageSize]="7" [nzScroll]="{ y: '800px' }" style="border:1px solid #ddd;background-color: #D6E8FA;">
+      <thead>
+        <tr>
+          <th nzWidth="150px">Name</th>
+          <th nzWidth="150px">Age</th>
+          <th nzWidth="150px">Age</th>
+          <th nzWidth="150px">Name</th>
+          <th nzWidth="150px">Age</th>
+          <th nzWidth="150px">Address</th>
+          <th nzWidth="150px" style="padding-left:50px !important">操作</th>
+        </tr>
+      </thead>
+      <tbody ngshow="false">
+        <tr *ngFor="let data of headerTable.data;let key=index">
+          <td>{{ data.name }}</td>
+          <td>{{ data.age }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.age }}</td>
+          <td>{{ data.address }}</td>
+          <td>
+              <button nz-button nzType="primary" (click)="del({key:key,data:data.name})">删除</button>
+              <button nz-button nzType="default" (click)="showModalXg({name:data.name,age:data.age,address:data.address,name:data.name,address:data.address})">修改</button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+</div>
+<!-- 表格展示模块End -->
+

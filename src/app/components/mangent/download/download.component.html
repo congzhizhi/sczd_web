@@ -1,0 +1,58 @@
+
+<div style="background-color: #EAE8E8;height: 51.5px;line-height: 50px;margin:-24px;margin-bottom:0 !important" class="main">
+  <a [ngClass]="{ 'active' : data.current == 1 }" (click)="setCurrent(1)">任务编制</a>
+  <a [ngClass]="{ 'active' : data.current == 2 }" (click)="setCurrent(2)">甘特图</a>
+</div>
+<div *ngIf="data.current == 1">
+  <div>
+      <nz-tabset>
+          <nz-tab nzTitle="工作项目">
+              <div style="display: flex;">
+                  <div style="width: 15%;border:1px solid #ddd;background-color: lavender;min-height: 700px;">
+                      <ul class="tree">
+                         <li style="background-color:#86F5A0;" title='节点添加'>
+                             <i nz-icon [nzType]="'plus'"></i>
+                         </li>
+                         <li style="background-color:#1090F0;" title='节点修改'>
+                              <i nz-icon [nzType]="'edit'"></i>
+                          </li>
+                          <li style="background-color:#FA4B62;" title='节点删除'>
+                              <i nz-icon [nzType]="'delete'"></i>
+                          </li>
+                      </ul>
+                      <nz-tree [nzData]="nodes"
+                      [nzCheckedKeys]="defaultCheckedKeys"
+                      [nzExpandedKeys]="defaultExpandedKeys"
+                      [nzSelectedKeys]="defaultSelectedKeys"
+                      (nzClick)="nzEvent($event)"
+                      (nzExpandChange)="nzEvent($event)"
+                      (nzCheckBoxChange)="nzEvent($event)"> </nz-tree>
+                  </div>
+                  <div style="width: 84%;border:1px solid #ddd;background-color:#EAE8E8;margin-left:10px;min-height: 700px;">right</div>
+              </div>
+          </nz-tab>
+          <nz-tab nzTitle="实验队">
+              Content of Tab Pane 2
+          </nz-tab>
+          <nz-tab nzTitle="产品结构">
+              Content of Tab Pane 3
+          </nz-tab>
+          <nz-tab nzTitle="检查表">
+              Content of Tab Pane 3
+          </nz-tab>
+          <nz-tab nzTitle="文档">
+              Content of Tab Pane 3
+          </nz-tab>
+          <nz-tab nzTitle="多媒体">
+              Content of Tab Pane 3
+          </nz-tab>
+          <nz-tab nzTitle="统计">
+              Content of Tab Pane 3
+          </nz-tab>
+          </nz-tabset>
+  </div>
+</div>
+<div *ngIf="data.current == 2">
+  甘特图模块
+</div>
+

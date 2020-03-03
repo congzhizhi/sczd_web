@@ -1,0 +1,36 @@
+<button nz-button nzType="primary">添加</button>
+<div>导出</div>
+<button (click)="daochu()">导出</button>
+<div>导入</div>
+<input type="file" (change)="daoru($event)" id="img-upload">
+<nz-table #headerTable [nzData]="listOfData" [nzPageSize]="10" [nzScroll]="{ y: '800px' }" style="border:1px solid #ddd">
+    <thead>
+      <tr>
+        <th  *ngFor="let item of dataIndex">
+          {{item}}
+        </th>
+        <th nzWidth="150px">操作</th>
+      </tr>
+    </thead>
+    <tbody ngshow="false">
+      <tr *ngFor="let data of tablelist">
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+        <td>
+            <button nz-button nzType="primary" (click)="del(data.address)">删除</button>
+            <button nz-button nzType="default">修改</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <div>
+    <video id="video" width="480" height="320" controls>
+    </video>
+    <div>
+      <button id="capture">拍照</button>
+    </div>
+    <canvas id="canvas" width="480" height="320"></canvas>

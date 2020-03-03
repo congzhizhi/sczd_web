@@ -1,0 +1,45 @@
+<!--
+ * @Author: honghong
+ * @LastEditors: honghong
+ * @Description: 登录
+ * @email: 3300536651@qq.com
+ * @Date: 2019-02-18 10:59:15
+ * @LastEditTime: 2019-10-17 09:39:27
+ -->
+ <img src="#" id="code" alt="">
+ <div class="login-in">
+   <div class="login-bg">
+     <div class="login-content clearfix">
+       <div class="login-left">
+         <span class="project-name"><img src="assets/image/logo.png" height="90" alt="logo"></span>
+       </div>
+       <div class="login-right">
+         <div class="login-right-content">
+           <h2 class="login-h2">
+             欢迎登录
+           </h2>
+           <form>
+             <div class="user-box">
+               <nz-input-group >
+                 <input [(ngModel)]="userinfo.username" id="userName" name="userName" required type="text" class="form-control" nz-input placeholder="请输入用户名">
+               </nz-input-group>
+             </div>
+             <div class="user-box">
+               <nz-input-group>
+                 <input [(ngModel)]="userinfo.password" id="passwordValid" name="passwordValid" class="form-control" required type="password" [(ngModel)]="password" nz-input placeholder="请输入密码" #passwordValid="ngModel" />
+               </nz-input-group>
+             </div>
+             <div class="user-box login-btn">
+               <button nz-button nzType="primary" (click)="doLogin()" [nzBlock]="true">登录</button>
+             </div>
+             <div class="google-download">
+               <p>本系统仅支持
+                 <a>谷歌</a>浏览器</p>
+             </div>
+           </form>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <a href=""></a>
