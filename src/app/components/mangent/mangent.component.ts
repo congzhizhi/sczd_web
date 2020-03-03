@@ -20,7 +20,7 @@ export class MangentComponent implements OnInit {
     }
   }
   showd(){
-    alert("参数")
+    alert("参数dayin")
   }
 
 }
